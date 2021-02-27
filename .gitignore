@@ -9,6 +9,7 @@ modern.json*
 # Edit at https://www.toptal.com/developers/gitignore?templates=jetbrains,phpstorm,macos,windows,vscode,extjs
 
 ### ExtJs ###
+index.html
 .architect
 bootstrap.css
 bootstrap.js
