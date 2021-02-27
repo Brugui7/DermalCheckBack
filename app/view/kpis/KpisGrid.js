@@ -3,28 +3,10 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
     alias: 'widget.kpisGrid',
     xtype: 'kpisGrid',
     id: 'kpisGrid',
-    //controllers
+    controller: 'kpisGridController',
     store: {
         type: 'Kpis',
-        data: [{
-            'id': 0,
-            'indicator': 'Consultas creadas',
-            "total": 10,
-            "mean": null,
-            "std": null
-        }, {
-            'id': 1,
-            'indicator': 'Consultas diagnosticadas',
-            "total": 9,
-            "mean": null,
-            "std": null
-        }, {
-            'id': 2,
-            'indicator': 'Tiempo por consulta (h)',
-            "total": null,
-            "mean": "54",
-            "std": 1.698
-        }]
+        data: []
     },
     viewConfig: {
         plugins: {
@@ -59,6 +41,6 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
         },
     ],
     listeners: {
-        //drop: 'listenerSortChangeGrid'
+        afterrender: 'loadData'
     },
 });

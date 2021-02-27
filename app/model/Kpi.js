@@ -5,7 +5,7 @@ Ext.define('DermalCheck.model.Kpi', {
     fields: [
         {
             name: 'id',
-            type: 'integer'
+            type: 'string'
         },
         {
             name: 'indicator',
