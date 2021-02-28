@@ -24,18 +24,20 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
         {
             text: 'Valor Total',
             dataIndex: 'total',
-            sortable: true,
             flex: 1
         },
         {
             text: 'Media',
-            sortable: false,
             dataIndex: 'mean',
+            xtype: 'numbercolumn',
+            format: '0.00',
             flex: 1
         },
         {
+            xtype: 'numbercolumn',
             text: 'Desviación típica',
             flex: 1,
+            format: '0.00',
             dataIndex: 'std',
         },
     ],

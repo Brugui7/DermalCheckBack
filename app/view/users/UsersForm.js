@@ -28,11 +28,15 @@ Ext.define('DermalCheck.view.users.UsersForm', {
             vtype: 'email'
         },
         {
-            xtype: 'textfield',
-            name: 'role',
             fieldLabel: 'Rol',
-            allowBlank: true
-        }
+            store: [{role: 'general'}, {role: 'specialist'}],
+            queryMode: 'local',
+            displayField: 'role',
+            valueField: 'role',
+            name: 'role',
+            xtype: 'combobox',
+            allowBlank: false
+        },
     ],
     dockedItems: [
         {

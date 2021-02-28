@@ -66,7 +66,7 @@ Ext.define('DermalCheck.view.users.UsersGrid', {
                     tooltip: 'Crear un nuevo usuario',
                     iconCls: 'x-fa fa-user-plus',
                     handler: 'listenerNewUser'
-                },
+                }/*,
                 {
 
                     xtype: 'button',
@@ -74,7 +74,7 @@ Ext.define('DermalCheck.view.users.UsersGrid', {
                     tooltip: 'Eliminar usuarios seleccionados',
                     iconCls: 'x-fa fa-trash',
                     //handler: 'listenerDeleteRestriction'
-                }
+                }*/
             ]
         }
     ],
