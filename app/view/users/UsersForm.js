@@ -17,19 +17,20 @@ Ext.define('DermalCheck.view.users.UsersForm', {
             xtype: 'textfield',
             name: 'displayName',
             fieldLabel: 'Nombre',
-            allowBlank: false
+            allowBlank: false,
         },
         {
             xtype: 'textfield',
             name: 'email',
             fieldLabel: 'Email',
-            allowBlank: false
+            allowBlank: false,
+            itemId: 'email'
         },
         {
             xtype: 'textfield',
-            name: 'rol',
+            name: 'role',
             fieldLabel: 'Rol',
-            allowBlank: false
+            allowBlank: true
         },
         {
             xtype: 'toolbar',
@@ -39,7 +40,7 @@ Ext.define('DermalCheck.view.users.UsersForm', {
                 {
                     text: 'Guardar',
                     iconCls: 'x-fa fa-save',
-                    handler: 'saveHandler'
+                    handler: 'listenerSaveUser'
                 }
             ]
         }

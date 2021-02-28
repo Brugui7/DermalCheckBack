@@ -24,6 +24,9 @@ Ext.define('DermalCheck.view.users.UsersGridController', {
             modal: true,
             title: 'Editar Usuario',
             iconCls: 'fa fa-user-edit',
+            listeners: {
+                close: () => { grid.getController().loadUsers(grid); }
+            },
             items: [{ xtype: 'usersForm', user: record, }]
         }).show();
     },
