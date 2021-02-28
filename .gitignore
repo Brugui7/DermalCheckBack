@@ -3,6 +3,7 @@ bootstrap.*
 classic.json*
 modern.json*
 .sencha
+.vscode
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/jetbrains,phpstorm,macos,windows,vscode,extjs

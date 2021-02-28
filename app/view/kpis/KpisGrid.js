@@ -5,8 +5,7 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
     id: 'kpisGrid',
     controller: 'kpisGridController',
     store: {
-        type: 'Kpis',
-        data: []
+        type: 'Kpis'
     },
     viewConfig: {
         plugins: {

@@ -24,6 +24,13 @@ Ext.define('DermalCheck.view.main.Main', {
             //xtype: 'materialRestrictionsGrid',
             id: 'bulkDownloadPanel',
             listeners: {}
+        },
+        {
+            title: 'Usuarios',
+            iconCls: 'x-fa fa-user',
+            xtype: 'usersGrid',
+            id: 'usersGrid',
+            listeners: {}
         }
     ],
     dockedItems: [
