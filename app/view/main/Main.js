@@ -67,6 +67,9 @@ Ext.define('DermalCheck.view.main.Main', {
                                 '<li>' +
                                 '<b>Descarga Buld</b>: Permite descargar las imágenes en formato apropiado para extender el Dataset HAM 10000 ' +
                                 '</li>' +
+                                '<li>' +
+                                '<b>Usuarios</b>: Permite gestionar usuarios existentes y crear otros nuevos' +
+                                '</li>' +
                                 '</ul>',
                             height: 400,
                             width: 800,
