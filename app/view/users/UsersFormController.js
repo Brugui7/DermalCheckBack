@@ -12,8 +12,22 @@ Ext.define('DermalCheck.view.users.UsersFormController', {
                     email: user.get('email'),
                     rol: user.get('role')
                 });
+            return;
         }
+
+
+        // Only available for user creation
+        view.add({
+            xtype: 'textfield',
+            inputType: 'password',
+            name: 'password',
+            fieldLabel: 'Contraseña',
+            allowBlank: false,
+            itemId: 'password',
+            minLength: 6
+        });
     },
+
     listenerSaveUser: function () {
         let form = this.getView();
         let user = form.user;
@@ -24,29 +38,56 @@ Ext.define('DermalCheck.view.users.UsersFormController', {
         form.setLoading('Guardando...');
         let db = firebase.firestore();
 
-        let task;
         if (user) {
-            task = db.collection('users').doc(user.get('uid')).update(form.getValues());
-        } else {
-            task = db.collection('users').add(form.getValues());
+            db.collection('users').doc(user.get('uid')).update(form.getValues())
+                .then((ref) => form.up().close())
+                .catch((error) => {
+                    console.log(error);
+                    this.showErrorMsg();
+                    form.setLoading(false);
+                });
+            return;
         }
-
-        task.then((ref) => form.up().close())
-            .catch((error) => {
-                console.log(error);
-                showErrorMsg(form);
-            });
+        this.createUserWithEmailAndPassword(form.getValues());
     },
-    showErrorMsg(view) {
+
+    showErrorMsg() {
         Ext.Msg.show({
             title: 'Error',
-            message: response && response.msg
-                ? response.msg
-                : 'Ocurrió un error al guardar',
+            message: 'Ocurrió un error al guardar',
             buttons: Ext.Msg.OK,
             icon: Ext.Msg.ERROR,
-            animateTarget: view
+            animateTarget: this.getView()
         });
+    },
+
+    createUserWithEmailAndPassword(values) {
+        let form = this.getView();
+        let db = firebase.firestore();
+
+        let secondaryApp = firebase.initializeApp(firebaseConfig, "Secondary");
+
+        secondaryApp.auth().createUserWithEmailAndPassword(values.email, values.password)
+            .then((user) => {
+                values.uid = secondaryApp.auth().currentUser.uid;
+                console.log(values.uid);
+                db.collection('users')
+                    .doc(values.uid)
+                    .set(values)
+                    .then((ref) => {
+                        form.up().close();
+                        secondaryApp.auth().signOut();
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                        this.showErrorMsg();
+                        form.setLoading(false);
+                    });
+            })
+            .catch((error) => {
+                console.log(error);
+                this.showErrorMsg();
+            });
     }
 
 

@@ -24,17 +24,24 @@ Ext.define('DermalCheck.view.users.UsersForm', {
             name: 'email',
             fieldLabel: 'Email',
             allowBlank: false,
-            itemId: 'email'
+            itemId: 'email',
+            vtype: 'email'
         },
         {
             xtype: 'textfield',
             name: 'role',
             fieldLabel: 'Rol',
             allowBlank: true
-        },
+        }
+    ],
+    dockedItems: [
         {
             xtype: 'toolbar',
+            dock: 'bottom',
             ui: 'footer',
+            defaults: {
+                iconAlign: 'left'
+            },
             items: [
                 '->',
                 {
