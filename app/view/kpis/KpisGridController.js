@@ -32,6 +32,13 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
                         "mean": data.averageDiagnoseHours,
                         "std": data.stdDiagnoseHours
                     },
+                    {
+                        'id': Math.random(),
+                        'indicator': 'Diagnósticos coincidentes',
+                        "total": data.matchingDiagnostics,
+                        "mean": data.matchingDiagnostics / data.requestDiagnosed,
+                        "std": null
+                    },
                 ]);
                 view.up().unmask();
             });

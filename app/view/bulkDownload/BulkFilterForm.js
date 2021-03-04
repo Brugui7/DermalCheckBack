@@ -1,6 +1,8 @@
 Ext.define('DermalCheck.view.bulkDownload.BulkFilterForm', {
     extend: 'Ext.form.Panel',
     alias: 'widget.bulkFilterForm',
+    xtype: 'bulkFilterForm',
+    id: 'bulkFilterForm',
     layout: 'vbox',
     align: 'stretch',
     defaults: {
