@@ -21,7 +21,7 @@ Ext.define('DermalCheck.view.main.Main', {
         {
             title: 'Descarga Bulk',
             iconCls: 'x-fa fa-download',
-            //xtype: 'materialRestrictionsGrid',
+            xtype: 'bulkMainPanel',
             id: 'bulkDownloadPanel',
             listeners: {}
         },

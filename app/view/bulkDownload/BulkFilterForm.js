@@ -3,20 +3,20 @@ Ext.define('DermalCheck.view.bulkDownload.BulkFilterForm', {
     alias: 'widget.bulkFilterForm',
     xtype: 'bulkFilterForm',
     id: 'bulkFilterForm',
-    layout: 'vbox',
+    layout: 'hbox',
     align: 'stretch',
     defaults: {
-        layout: 'hbox'
+        margin: '4'
     },
     items: [
         {
             xtype: "container",
             layout: {
                 type: "hbox",
-                align: "bottom"
+                align: "bottom",
             },
             defaults: {
-                labelAlign: "top"
+                labelAlign: "top",
             },
             items: [
                 {
@@ -30,9 +30,9 @@ Ext.define('DermalCheck.view.bulkDownload.BulkFilterForm', {
                 },
                 {
                     xtype: "button",
-                    iconCls: "x-fa fa-close",
+                    iconCls: "x-fa fa-times",
                     handler: function (button, event) {
-                        let field = self.down('#dateFrom');
+                        let field = this.up().down('#dateFrom');
                         if (field) {
                             field.reset();
                         }
@@ -61,13 +61,31 @@ Ext.define('DermalCheck.view.bulkDownload.BulkFilterForm', {
                 },
                 {
                     xtype: "button",
-                    iconCls: "x-fa fa-close",
+                    iconCls: "x-fa fa-times",
                     handler: function (button, event) {
-                        var field = self.down("#dateTo");
+                        var field = this.up().down("#dateTo");
                         if (field) {
                             field.reset();
                         }
                     }
+                }
+            ]
+        }
+    ],
+    dockedItems: [
+        {
+            xtype: "toolbar",
+            dock: "bottom",
+            ui: "footer",
+            layout: {
+                type: "hbox"
+            },
+            items: [
+                "->",
+                {
+                    text: "Filtrar",
+                    iconCls: "x-fa fa-search",
+                    handler: 'filter'
                 }
             ]
         }

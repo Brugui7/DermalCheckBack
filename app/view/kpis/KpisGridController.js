@@ -21,7 +21,7 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
                     {
                         'id': Math.random(),
                         'indicator': 'Consultas Diagnosticadas',
-                        "total": data.requestDiagnosed,
+                        "total": data.requestsDiagnosed,
                         "mean": null,
                         "std": null
                     },
@@ -36,7 +36,7 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
                         'id': Math.random(),
                         'indicator': 'Diagnósticos coincidentes',
                         "total": data.matchingDiagnostics,
-                        "mean": data.matchingDiagnostics / data.requestDiagnosed,
+                        "mean": data.matchingDiagnostics / data.requestsDiagnosed,
                         "std": null
                     },
                 ]);

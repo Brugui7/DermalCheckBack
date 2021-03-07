@@ -10,7 +10,7 @@ Ext.define('DermalCheck.view.users.UsersFormController', {
                 .setValues({
                     displayName: user.get('displayName'),
                     email: user.get('email'),
-                    rol: user.get('role')
+                    role: user.get('role')
                 });
             return;
         }
