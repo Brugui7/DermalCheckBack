@@ -39,7 +39,8 @@ Ext.define('DermalCheck.view.users.UsersFormController', {
         let db = firebase.firestore();
 
         if (user) {
-            db.collection('users').doc(user.get('uid')).update(form.getValues())
+            db.collection('users').doc(user.get('uid'))
+                .update(form.getValues())
                 .then((ref) => form.up().close())
                 .catch((error) => {
                     console.log(error);
