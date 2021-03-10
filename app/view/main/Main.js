@@ -65,7 +65,7 @@ Ext.define('DermalCheck.view.main.Main', {
                                 '<ul>' +
                                 '<li><b>Cuadro de mando</b>: Permite visualizar las estadísticas actualizadas de la aplicación.</li>' +
                                 '<li>' +
-                                '<b>Descarga Buld</b>: Permite descargar las imágenes en formato apropiado para extender el Dataset HAM 10000 ' +
+                                '<b>Descarga Bulk</b>: Permite descargar las imágenes en formato apropiado para extender el Dataset HAM 10000 ' +
                                 '</li>' +
                                 '<li>' +
                                 '<b>Usuarios</b>: Permite gestionar usuarios existentes y crear otros nuevos' +

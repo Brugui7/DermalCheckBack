@@ -16,6 +16,30 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
      */
     filter: async function (button, event, values) {
         const view = this.getView();
+        const formValues = view.down('bulkFilterForm').getForm().getValues();
+        const dateFrom = formValues.dateFrom.trim();
+        const dateTo = formValues.dateTo.trim();
+        if (!!!dateFrom || !!!dateTo) {
+            Ext.toast('Los campos de fecha son obligatorios.', 'Error');
+            return;
+        }
+
+        try {
+            this.doBulkDownload(Ext.Date.parse(dateFrom, 'd/m/Y'), Ext.Date.parse(dateTo, 'd/m/Y'));
+        } catch (error) {
+            console.error(error);
+            Ext.toast('Ocurrió un error inesperado, inténtelo de nuevo más tarde', 'Error');
+        }
+
+
+    },
+    /**
+     * 
+     * @param {Date} dateFrom 
+     * @param {Date} dateTo 
+     */
+    doBulkDownload: async function (dateFrom, dateTo) {
+        const view = this.getView();
         view.mask('Obteniendo consultas...');
         this.createZip();
         let maxImages = 0;
@@ -25,13 +49,18 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
         const storage = firebase.storage();
         view.mask('Obteniendo consultas...');
         db.collection('requests')
-            //.where('diagnosticDate', '>=', '2020-01-01') // TODO
-            .where('diagnosticDate', '<=', new Date()) // TODO
+            .where('diagnosticDate', '>=', dateFrom)
+            .where('diagnosticDate', '<=', dateTo)
             .get()
             .then((querySnapshots) => {
-
+                if (querySnapshots.size == 0) {
+                    Ext.toast('No se encontraron datos para las fechas introducidas', 'Sin resultados');
+                    view.unmask();
+                    return;
+                }
                 // This method will work as long as there is 1 and only 1 image per request.
                 maxImages = querySnapshots.size;
+
 
                 view.mask('Descargando imágenes...');
 

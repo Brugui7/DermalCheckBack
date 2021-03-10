@@ -21,7 +21,7 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanel', {
             collapsible: false,
             region: 'center',
             margin: '5 0 0 0',
-            html: '<h2>TODO</h2><p>Rellenar esto con algo</p>'
+            html: ''
         }
 
     ],
