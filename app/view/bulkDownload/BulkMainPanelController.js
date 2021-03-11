@@ -2,6 +2,17 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.bulkMainPanelController',
     zip: null,
+    diagnosticsFileTags: [
+        'Actinic_keratosis',
+        'Basal_cell_carcinoma',
+        'Lesions_similar_to_benign_keratosis',
+        'Dermatofibroma',
+        'Melanoma',
+        'Melanocytic_nevus',
+        'Cutaneous_vascular_lesions',
+        'Squamous_cell_carcinoma',
+        'Unknown',
+    ],
     createZip: function () {
         let scriptTag = document.createElement('script');
         scriptTag.src = 'resources/client-zip.js';
@@ -40,6 +51,7 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
      */
     doBulkDownload: async function (dateFrom, dateTo) {
         const view = this.getView();
+        const self = this;
         view.mask('Obteniendo consultas...');
         this.createZip();
         let maxImages = 0;
@@ -61,18 +73,23 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
                 // This method will work as long as there is 1 and only 1 image per request.
                 maxImages = querySnapshots.size;
 
-
                 view.mask('Descargando imágenes...');
 
                 querySnapshots.forEach(async doc => {
                     let storageRef = storage.ref();
+                    const docData = doc.data();
+                    let diagnosticLabelIndex = docData.diagnosedLabelIndex;
+                    if (!!docData.pathologistDiagnosticLabelIndex && docData.pathologistDiagnosticLabelIndex != - 1) {
+                        diagnosticLabelIndex = docData.pathologistDiagnosticLabelIndex;
+                    }
 
+                    const diagnosticParsed = self.diagnosticsFileTags[diagnosticLabelIndex];
                     // Lists all images of the request
                     const folder = await storageRef.child(`images/${doc.id}`).listAll();
 
                     folder.items.forEach(async itemRef => {
                         const url = await itemRef.getDownloadURL();
-                        this.addImageToZipAndCheckDownload(url, `${doc.id}.jpg`, ++imagesProccesed, maxImages);
+                        this.addImageToZipAndCheckDownload(url, `UCAM_${diagnosticParsed}_${doc.id}.jpg`, ++imagesProccesed, maxImages);
                     });
                 });
             })
