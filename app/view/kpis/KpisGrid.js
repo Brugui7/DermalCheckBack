@@ -23,8 +23,9 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
             defaults: {
                 flex: 1,
                 width: '100%',
-                height: 500,
+                height: '100%',
             },
+            flex: 2,
             items: [
                 {
                     id: 'totalDataChart',
@@ -70,47 +71,45 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
                         }
                     },
                 },
-                /*{
+                {
                     id: 'requestsByDiagnosticChart',
                     xtype: 'polar',
                     reference: 'chart2',
+
                     captions: {
-                        title: 'Número de consultas por diagnóstico',
+                        title: {
+                            text: 'Número de consultas por diagnóstico',
+                            align: 'left'
+                        }
                     },
-                    width: '100%',
-                    height: 500,
-                    insetPadding: 40,
-                    innerPadding: 20,
                     store: {
                         type: 'RequestsByDiagnostics'
                     },
-                    legend: {
-                        docked: 'bottom'
-                    },
-                    //interactions: ['rotate'],
+                    interactions: ['rotate'],
+                    animation: Ext.isIE8 ? false : true,
                     series: {
                         type: 'pie',
                         angleField: 'requestsNumber',
+                        style: {
+                            minGapWidth: 20
+                        },
+                        highlight: {
+                            strokeStyle: 'black',
+                            fillStyle: 'gold'
+                        },
                         label: {
                             field: 'diagnosticLabel',
                             display: 'diagnosticLabel',
-                            calloutLine: {
-                                length: 60,
-                                width: 3
-                            }
                         },
-                        /*highlight: true,
-                        tooltip: {
-                            trackMouse: true,
-                        }*
-
-                    }
-                },*/
+                        highlight: true,
+                    },
+                },
             ]
         },
         {
             xtype: 'grid',
             id: 'kpisGrid',
+            title: 'Datos totales',
             store: {
                 type: 'Kpis'
             },

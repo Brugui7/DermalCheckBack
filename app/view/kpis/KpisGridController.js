@@ -3,8 +3,8 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
     alias: 'controller.kpisGridController',
     loadData: function (view, layout, options) {
         const grid = view.down('#kpisGrid');
-        const totalDataChart = view.down('#totalDataChart')
-        //const requestsByDiagnosticChart = view.down('#requestsByDiagnosticChart')
+        const totalDataChart = view.down('#totalDataChart');
+        const requestsByDiagnosticChart = view.down('#requestsByDiagnosticChart');
         view.mask("Cargando...");
 
         let db = firebase.firestore();
@@ -22,7 +22,7 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
             .get()
             .then((documentSnapshot) => {
                 const dataParsed = this.parseRequestsByDiagnostic(documentSnapshot.data());
-                //requestsByDiagnosticChart.store.add(dataParsed);
+                requestsByDiagnosticChart.store.add(dataParsed);
             });
 
         Promise.all([a, b]).then(values => view.unmask());
@@ -52,12 +52,12 @@ Ext.define('DermalCheck.view.kpis.KpisGridController', {
             },
         ];
     },
-    parseRequestsByDiagnostic: function(data) {
+    parseRequestsByDiagnostic: function (data) {
         let dataParsed = [];
         DermalCheck.Constants.SPANISH_LABELS.forEach((label, index) => {
             dataParsed.push({
                 id: Math.random(),
-                requestsNumber: '1',
+                requestsNumber: data[index],
                 diagnosticLabel: label
             });
         });
