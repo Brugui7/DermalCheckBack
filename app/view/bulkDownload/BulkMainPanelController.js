@@ -2,17 +2,7 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
     extend: 'Ext.app.ViewController',
     alias: 'controller.bulkMainPanelController',
     zip: null,
-    diagnosticsFileTags: [
-        'Actinic_keratosis',
-        'Basal_cell_carcinoma',
-        'Lesions_similar_to_benign_keratosis',
-        'Dermatofibroma',
-        'Melanoma',
-        'Melanocytic_nevus',
-        'Cutaneous_vascular_lesions',
-        'Squamous_cell_carcinoma',
-        'Unknown',
-    ],
+    
     createZip: function () {
         let scriptTag = document.createElement('script');
         scriptTag.src = 'resources/client-zip.js';
@@ -83,7 +73,7 @@ Ext.define('DermalCheck.view.bulkDownload.BulkMainPanelController', {
                         diagnosticLabelIndex = docData.pathologistDiagnosticLabelIndex;
                     }
 
-                    const diagnosticParsed = self.diagnosticsFileTags[diagnosticLabelIndex];
+                    const diagnosticParsed = DermalCheck.Constants.DIAGNOSTICS_FILE_TAGS[diagnosticLabelIndex];
                     // Lists all images of the request
                     const folder = await storageRef.child(`images/${doc.id}`).listAll();
 
