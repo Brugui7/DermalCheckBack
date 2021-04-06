@@ -1,0 +1,10 @@
+{
+  "hosting": {
+    "public": "build/production/DermalCheck",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ]
+  }
+}
