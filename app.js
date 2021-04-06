@@ -11,6 +11,7 @@ Ext.application({
         // This will automatically load all classes in the DermalCheck namespace
         // so that application classes do not need to require each other.
         'DermalCheck.*',
+        'Ext.chart.*'
     ],
 
     // The name of the initial view to create.

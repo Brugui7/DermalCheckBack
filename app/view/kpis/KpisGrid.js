@@ -78,7 +78,7 @@ Ext.define('DermalCheck.view.kpis.KpisGrid', {
 
                     captions: {
                         title: {
-                            text: 'Número de consultas por diagnóstico',
+                            text: 'Consultas por diagnóstico',
                             align: 'left'
                         }
                     },
