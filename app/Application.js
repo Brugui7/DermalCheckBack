@@ -23,5 +23,13 @@ Ext.define('DermalCheck.Application', {
                 }
             }
         );
+    },
+    launch: function() {
+        // TODO firebase
+        var loggedIn = false;
+        
+        Ext.create({
+            xtype: loggedIn ? 'app-main' : 'login'
+        });
     }
 });

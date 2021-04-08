@@ -4,16 +4,16 @@
  */
 Ext.define('DermalCheck.view.main.MainController', {
     extend: 'Ext.app.ViewController',
-
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
+    listenerBtnLogout: function () {
+        // Remove Main View
+        this.getView().destroy();
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
+        // Add the Login Window
+        Ext.create({
+            xtype: 'login'
+        });
     }
+
 });

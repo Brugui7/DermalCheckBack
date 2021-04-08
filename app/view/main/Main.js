@@ -1,16 +1,11 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting automatically applies the "viewport"
- * plugin causing this view to become the body element (i.e., the viewport).
- *
- * TODO - Replace this content of this view to suite the needs of your application.
- */
 Ext.define('DermalCheck.view.main.Main', {
     extend: 'Ext.tab.Panel',
     xtype: 'app-main',
+    controller: 'main',
     requires: [
         'Ext.layout.container.Card'
     ],
+    plugins: 'viewport',
     title: 'DermalCheck',
     items: [
         {
@@ -84,8 +79,7 @@ Ext.define('DermalCheck.view.main.Main', {
                     text: 'Cerrar sesión',
                     tooltip: 'Cerrar sesión',
                     iconCls: 'x-fa fa-sign-out-alt',
-                    handler: function (button, event) {
-                    }
+                    handler: 'listenerBtnLogout'
                 }
             ]
         },

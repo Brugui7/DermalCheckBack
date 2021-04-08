@@ -13,7 +13,4 @@ Ext.application({
         'DermalCheck.*',
         'Ext.chart.*'
     ],
-
-    // The name of the initial view to create.
-    mainView: 'DermalCheck.view.main.Main'
 });
