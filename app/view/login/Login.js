@@ -20,10 +20,6 @@ Ext.define('DermalCheck.view.login.Login', {
             inputType: 'password',
             fieldLabel: 'Contraseña',
             allowBlank: false
-        }, {
-            xtype: 'displayfield',
-            hideEmptyLabel: false,
-            value: 'Enter any non-blank password'
         }],
         buttons: [{
             text: 'Acceder',
