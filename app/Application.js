@@ -24,12 +24,11 @@ Ext.define('DermalCheck.Application', {
             }
         );
     },
-    launch: function() {
-        // TODO firebase
-        var loggedIn = false;
-        
-        Ext.create({
-            xtype: loggedIn ? 'app-main' : 'login'
+    launch: function () {
+        firebase.auth().onAuthStateChanged((user) => {
+            Ext.create({
+                xtype: !!user ? 'app-main' : 'login'
+            });
         });
     }
 });

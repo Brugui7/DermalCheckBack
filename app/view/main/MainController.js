@@ -7,10 +7,8 @@ Ext.define('DermalCheck.view.main.MainController', {
     alias: 'controller.main',
 
     listenerBtnLogout: function () {
-        // Remove Main View
         this.getView().destroy();
-
-        // Add the Login Window
+        firebase.auth().signOut();
         Ext.create({
             xtype: 'login'
         });
