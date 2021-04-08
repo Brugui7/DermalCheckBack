@@ -16,7 +16,7 @@ Ext.define('DermalCheck.Application', {
     },
 
     onAppUpdate: function () {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
+        Ext.Msg.confirm('Actualización de la aplicación', 'Acabamos de actualizar a la última versión de DermalCheck ¿Recargar?',
             function (choice) {
                 if (choice === 'yes') {
                     window.location.reload();
