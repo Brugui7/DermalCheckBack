@@ -9,6 +9,7 @@ Ext.define('DermalCheck.view.main.MainController', {
     listenerBtnLogout: function () {
         this.getView().destroy();
         firebase.auth().signOut();
+        window.location.reload();
     }
 
 });
