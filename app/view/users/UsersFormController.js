@@ -78,6 +78,7 @@ Ext.define('DermalCheck.view.users.UsersFormController', {
                     .then((ref) => {
                         form.up().close();
                         secondaryApp.auth().signOut();
+                        secondaryApp.delete();
                     })
                     .catch((error) => {
                         console.log(error);
