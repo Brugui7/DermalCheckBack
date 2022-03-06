@@ -1,6 +1,13 @@
-# DermalCheck Backoffice
+<h1 align="center">DermalCheck Backoffice</h1>
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/18025825/156939152-fabfc0bb-ecf2-4cb7-9d7d-4033ce269932.png" alt="dermalcheck-logo" width="120px" height="120px"/>
+  <br>
+  <i>This is the backoffice part of my final degree project on early skin lesions detection. <br>It's done with ExtJS.</i>
+  <br>
+</p>
+<hr>
 
-This is the backoffice part of my final degree project on early skin lesions detection. It's done with ExtJS.
+
 
 # Modules
 
